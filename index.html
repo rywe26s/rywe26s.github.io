@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BLXCKZ</title>
     <style>
         body {
@@ -14,8 +14,11 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
         }
 
         h1 {
@@ -25,7 +28,6 @@
             margin-bottom: 20px;
             margin-left: 15px;
             text-transform: uppercase;
-            text-align: center;
         }
 
         .subtitle {
@@ -48,6 +50,7 @@
             border-radius: 12px;
             text-transform: uppercase;
             transition: 0.2s;
+            display: inline-block;
         }
 
         .action-button:hover {
@@ -58,9 +61,33 @@
         .footer {
             position: absolute;
             bottom: 30px;
+            left: 0;
             color: #444444;
             font-family: Arial, sans-serif;
             font-size: 0.8em;
+            width: 100%;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2em;
+                letter-spacing: 10px;
+                margin-left: 10px;
+            }
+
+            .subtitle {
+                font-size: 1em;
+                margin-bottom: 40px;
+            }
+
+            .action-button {
+                font-size: 0.9em;
+                padding: 14px 20px;
+                width: 90%;
+                max-width: 320px;
+                line-height: 1.4;
+            }
         }
     </style>
 </head>
@@ -73,7 +100,7 @@
         ИНДИ-ГОЛОВОЛОМКА
     </div>
 
-    <a href="privacy.html" class="action-button">Политика конфиденциальности</a>
+    <a href="privacy.html" class="action-button">Политика<br>конфиденциальности</a>
 
 </body>
 
