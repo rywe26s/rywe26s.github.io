@@ -35,8 +35,17 @@
             font-family: Arial, sans-serif;
             font-size: 1.2em;
             font-weight: bold;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 320px;
         }
 
         .action-button {
@@ -46,11 +55,13 @@
             font-size: 1.1em;
             font-family: Arial, sans-serif;
             font-weight: 900;
-            padding: 16px 40px;
+            padding: 16px 20px;
             border-radius: 12px;
             text-transform: uppercase;
             transition: 0.2s;
-            display: inline-block;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .action-button:hover {
@@ -58,15 +69,33 @@
             background-color: #e0e0e0;
         }
 
+        .action-button.rustore {
+            background-color: #005FF9;
+            color: #ffffff;
+        }
+
+        .action-button.rustore:hover {
+            background-color: #004ecc;
+        }
+
         .footer {
             position: absolute;
             bottom: 30px;
             left: 0;
-            color: #444444;
-            font-family: Arial, sans-serif;
-            font-size: 0.8em;
             width: 100%;
             text-align: center;
+        }
+
+        .footer a {
+            color: #444444;
+            font-family: Arial, sans-serif;
+            font-size: 0.9em;
+            text-decoration: underline;
+            transition: 0.2s;
+        }
+
+        .footer a:hover {
+            color: #ffffff;
         }
 
         @media (max-width: 600px) {
@@ -84,9 +113,6 @@
             .action-button {
                 font-size: 0.9em;
                 padding: 14px 20px;
-                width: 90%;
-                max-width: 320px;
-                line-height: 1.4;
             }
         }
     </style>
@@ -100,7 +126,21 @@
         ИНДИ-ГОЛОВОЛОМКА
     </div>
 
-    <a href="privacy.html" class="action-button">Политика<br>конфиденциальности</a>
+    <div class="buttons-container">
+
+        <a href="https://github.com/rywe26s/rywe26s.github.io/releases/download/v1.0.1/BLXCKZ_1.0.1.apk"
+            class="action-button">
+            СКАЧАТЬ .APK
+        </a>
+
+        <a href="https://www.rustore.ru/catalog/app/com.rywes.blxckz" class="action-button rustore">
+            СКАЧАТЬ В RUSTORE
+        </a>
+    </div>
+
+    <div class="footer">
+        <a href="privacy.html">Политика конфиденциальности</a>
+    </div>
 
 </body>
 
