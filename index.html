@@ -7,7 +7,7 @@
     <title>BLXCKZ</title>
     <style>
         body {
-            background-color: #111111;
+            background-color: #121212;
             color: #ffffff;
             font-family: 'Arial Black', Impact, sans-serif;
             display: flex;
@@ -17,24 +17,26 @@
             min-height: 100vh;
             margin: 0;
             padding: 20px;
+            padding-bottom: 15vh;
             box-sizing: border-box;
             text-align: center;
         }
 
         h1 {
-            font-size: 3.5em;
+            font-size: 4em;
             font-weight: 900;
-            letter-spacing: 15px;
+            letter-spacing: 14px;
+            margin-right: -14px;
+            margin-top: 0;
             margin-bottom: 20px;
-            margin-left: 15px;
             text-transform: uppercase;
         }
 
         .subtitle {
-            color: #F8D147;
-            font-family: Arial, sans-serif;
-            font-size: 1.2em;
-            font-weight: bold;
+            color: #FFD93D;
+            font-family: system-ui, -apple-system, Arial, sans-serif;
+            font-size: 1.1em;
+            font-weight: 800;
             margin-bottom: 50px;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -43,30 +45,25 @@
         .buttons-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 16px;
             width: 100%;
             max-width: 320px;
         }
 
         .action-button {
-            background-color: #ffffff;
-            color: #000000;
+            background-color: #f2f2f2;
+            color: #121212;
             text-decoration: none;
             font-size: 1.1em;
-            font-family: Arial, sans-serif;
+            font-family: system-ui, -apple-system, sans-serif;
             font-weight: 900;
-            padding: 16px 20px;
-            border-radius: 12px;
+            padding: 18px 20px;
+            border-radius: 16px;
             text-transform: uppercase;
-            transition: 0.2s;
+            transition: transform 0.15s ease, background-color 0.2s ease;
             display: block;
             width: 100%;
             box-sizing: border-box;
-        }
-
-        .action-button:hover {
-            transform: scale(1.05);
-            background-color: #e0e0e0;
         }
 
         .action-button.rustore {
@@ -74,8 +71,20 @@
             color: #ffffff;
         }
 
-        .action-button.rustore:hover {
-            background-color: #004ecc;
+        @media (hover: hover) {
+            .action-button:hover {
+                transform: scale(1.05);
+                background-color: #ffffff;
+            }
+
+            .action-button.rustore:hover {
+                background-color: #004ecc;
+            }
+        }
+
+        .action-button:active {
+            transform: scale(0.95);
+            opacity: 0.9;
         }
 
         .footer {
@@ -87,22 +96,24 @@
         }
 
         .footer a {
-            color: #444444;
+            color: #555555;
             font-family: Arial, sans-serif;
             font-size: 0.9em;
             text-decoration: underline;
-            transition: 0.2s;
+            transition: color 0.2s;
         }
 
-        .footer a:hover {
-            color: #ffffff;
+        @media (hover: hover) {
+            .footer a:hover {
+                color: #ffffff;
+            }
         }
 
         @media (max-width: 600px) {
             h1 {
-                font-size: 2.2em;
+                font-size: 14vw;
                 letter-spacing: 10px;
-                margin-left: 10px;
+                margin-right: -10px;
             }
 
             .subtitle {
@@ -111,8 +122,8 @@
             }
 
             .action-button {
-                font-size: 0.9em;
-                padding: 14px 20px;
+                font-size: 1em;
+                padding: 16px 20px;
             }
         }
     </style>
@@ -122,25 +133,36 @@
 
     <h1>BLXCKZ</h1>
 
-    <div class="subtitle">
+    <div class="subtitle" id="subtitle">
         ИНДИ-ГОЛОВОЛОМКА
     </div>
 
     <div class="buttons-container">
 
         <a href="https://github.com/rywe26s/rywe26s.github.io/releases/download/v1.0.1/BLXCKZ_1.0.1.apk"
-            class="action-button">
+            class="action-button" id="btn-apk">
             СКАЧАТЬ .APK
         </a>
 
-        <a href="https://www.rustore.ru/catalog/app/com.rywes.blxckz" class="action-button rustore">
+        <a href="https://www.rustore.ru/catalog/app/com.rywes.blxckz" class="action-button rustore" id="btn-rustore">
             СКАЧАТЬ В RUSTORE
         </a>
     </div>
 
     <div class="footer">
-        <a href="privacy.html">Политика конфиденциальности</a>
+        <a href="privacy.html" id="btn-privacy">Политика конфиденциальности</a>
     </div>
+
+    <script>
+        const userLang = navigator.language || navigator.userLanguage;
+
+        if (!userLang.toLowerCase().startsWith('ru')) {
+            document.getElementById('subtitle').innerText = 'INDIE PUZZLE GAME';
+            document.getElementById('btn-apk').innerText = 'DOWNLOAD .APK';
+            document.getElementById('btn-rustore').innerText = 'GET IT ON RUSTORE';
+            document.getElementById('btn-privacy').innerText = 'Privacy Policy';
+        }
+    </script>
 
 </body>
 
