@@ -20,6 +20,36 @@
             padding-bottom: 15vh;
             box-sizing: border-box;
             text-align: center;
+            position: relative;
+        }
+
+        .lang-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .lang-selector select {
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px solid #555555;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .lang-selector select:hover {
+            border-color: #FFD93D;
+        }
+
+        .lang-selector select option {
+            background-color: #121212;
+            color: #ffffff;
         }
 
         h1 {
@@ -84,7 +114,6 @@
                 background-color: #ffffff;
             }
 
-            /* Эффект наведения для желтой кнопки */
             .action-button.play-web:hover {
                 background-color: #ffe47a;
                 box-shadow: 0 6px 20px rgba(255, 217, 61, 0.4);
@@ -138,50 +167,115 @@
                 font-size: 1em;
                 padding: 16px 20px;
             }
+
+            .lang-selector {
+                top: 15px;
+                right: 15px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<h1>BLXCKZ</h1>
+    <div class="lang-selector">
+        <select id="lang-switcher">
+            <option value="ru">RU</option>
+            <option value="en">EN</option>
+            <option value="es">ES</option>
+            <option value="pt">PT</option>
+        </select>
+    </div>
 
-<div class="subtitle" id="subtitle">
-    ИНДИ-ГОЛОВОЛОМКА
-</div>
+    <h1>BLXCKZ</h1>
 
-<div class="buttons-container">
+    <div class="subtitle" id="subtitle">
+        ИНДИ-ГОЛОВОЛОМКА
+    </div>
 
-    <a href="/play/" class="action-button play-web" id="btn-play">
-        ИГРАТЬ В БРАУЗЕРЕ
-    </a>
+    <div class="buttons-container">
 
-    <a href="https://github.com/rywe26s/rywe26s.github.io/releases/download/v1.1.1/BLXCKZ_1.1.1.apk"
-       class="action-button" id="btn-apk">
-        СКАЧАТЬ .APK
-    </a>
+        <a href="/play/" class="action-button play-web" id="btn-play">
+            ИГРАТЬ В БРАУЗЕРЕ
+        </a>
 
-    <a href="https://www.rustore.ru/catalog/app/com.rywes.blxckz" class="action-button rustore" id="btn-rustore">
-        СКАЧАТЬ В RUSTORE
-    </a>
-</div>
+        <a href="https://github.com/rywe26s/rywe26s.github.io/releases/download/v1.1.1/BLXCKZ_1.1.1.apk"
+            class="action-button" id="btn-apk">
+            СКАЧАТЬ .APK
+        </a>
 
-<div class="footer">
-    <a href="privacy.html" id="btn-privacy">Политика конфиденциальности</a>
-</div>
+        <a href="https://www.rustore.ru/catalog/app/com.rywes.blxckz" class="action-button rustore" id="btn-rustore">
+            СКАЧАТЬ В RUSTORE
+        </a>
+    </div>
 
-<script>
-    const userLang = navigator.language || navigator.userLanguage;
+    <div class="footer">
+        <a href="privacy.html" id="btn-privacy">Политика конфиденциальности</a>
+    </div>
 
-    if (!userLang.toLowerCase().startsWith('ru')) {
-        document.getElementById('subtitle').innerText = 'INDIE PUZZLE GAME';
-        document.getElementById('btn-play').innerText = 'PLAY IN BROWSER';
-        document.getElementById('btn-apk').innerText = 'DOWNLOAD .APK';
-        document.getElementById('btn-rustore').innerText = 'GET IT ON RUSTORE';
-        document.getElementById('btn-privacy').innerText = 'Privacy Policy';
-    }
-</script>
+    <script>
+        const translations = {
+            ru: {
+                subtitle: "ИНДИ-ГОЛОВОЛОМКА",
+                btnPlay: "ИГРАТЬ В БРАУЗЕРЕ",
+                btnApk: "СКАЧАТЬ .APK",
+                btnRustore: "СКАЧАТЬ В RUSTORE",
+                btnPrivacy: "Политика конфиденциальности"
+            },
+            en: {
+                subtitle: "INDIE PUZZLE GAME",
+                btnPlay: "PLAY IN BROWSER",
+                btnApk: "DOWNLOAD .APK",
+                btnRustore: "GET IT ON RUSTORE",
+                btnPrivacy: "Privacy Policy"
+            },
+            es: {
+                subtitle: "ROMPECABEZAS INDIE",
+                btnPlay: "JUGAR EN NAVEGADOR",
+                btnApk: "DESCARGAR .APK",
+                btnRustore: "DESCARGAR EN RUSTORE",
+                btnPrivacy: "Política de privacidad"
+            },
+            pt: {
+                subtitle: "QUEBRA-CABEÇA INDIE",
+                btnPlay: "JOGAR NO NAVEGADOR",
+                btnApk: "BAIXAR .APK",
+                btnRustore: "BAIXAR NO RUSTORE",
+                btnPrivacy: "Política de Privacidade"
+            }
+        };
+
+        const langSwitcher = document.getElementById('lang-switcher');
+
+        function applyLanguage(lang) {
+            if (!translations[lang]) lang = 'en';
+
+            const t = translations[lang];
+            document.getElementById('subtitle').innerText = t.subtitle;
+            document.getElementById('btn-play').innerText = t.btnPlay;
+            document.getElementById('btn-apk').innerText = t.btnApk;
+            document.getElementById('btn-rustore').innerText = t.btnRustore;
+            document.getElementById('btn-privacy').innerText = t.btnPrivacy;
+
+            langSwitcher.value = lang;
+
+            document.documentElement.lang = lang;
+        }
+
+        let currentLang = localStorage.getItem('blxckz_lang');
+
+        if (!currentLang) {
+            currentLang = (navigator.language || navigator.userLanguage).slice(0, 2).toLowerCase();
+        }
+
+        applyLanguage(currentLang);
+
+        langSwitcher.addEventListener('change', function (e) {
+            const selectedLang = e.target.value;
+            applyLanguage(selectedLang);
+            localStorage.setItem('blxckz_lang', selectedLang);
+        });
+    </script>
 
 </body>
-
 </html>
