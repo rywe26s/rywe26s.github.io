@@ -96,13 +96,6 @@
             box-sizing: border-box;
         }
 
-        .action-button.play-web {
-            background-color: #FFD93D;
-            color: #121212;
-            margin-bottom: 12px;
-            box-shadow: 0 4px 15px rgba(255, 217, 61, 0.2);
-        }
-
         .action-button.rustore {
             background-color: #005FF9;
             color: #ffffff;
@@ -112,11 +105,6 @@
             .action-button:hover {
                 transform: scale(1.05);
                 background-color: #ffffff;
-            }
-
-            .action-button.play-web:hover {
-                background-color: #ffe47a;
-                box-shadow: 0 6px 20px rgba(255, 217, 61, 0.4);
             }
 
             .action-button.rustore:hover {
@@ -194,11 +182,6 @@
     </div>
 
     <div class="buttons-container">
-
-        <a href="/play/" class="action-button play-web" id="btn-play">
-            ИГРАТЬ В БРАУЗЕРЕ
-        </a>
-
         <a href="https://github.com/rywe26s/rywe26s.github.io/releases/download/v1.1.2/BLXCKZ_1.1.2.apk"
             class="action-button" id="btn-apk">
             СКАЧАТЬ .APK
@@ -217,28 +200,24 @@
         const translations = {
             ru: {
                 subtitle: "ИНДИ-ГОЛОВОЛОМКА",
-                btnPlay: "ИГРАТЬ В БРАУЗЕРЕ",
                 btnApk: "СКАЧАТЬ .APK",
                 btnRustore: "СКАЧАТЬ В RUSTORE",
                 btnPrivacy: "Политика конфиденциальности"
             },
             en: {
                 subtitle: "INDIE PUZZLE GAME",
-                btnPlay: "PLAY IN BROWSER",
                 btnApk: "DOWNLOAD .APK",
                 btnRustore: "GET IT ON RUSTORE",
                 btnPrivacy: "Privacy Policy"
             },
             es: {
                 subtitle: "ROMPECABEZAS INDIE",
-                btnPlay: "JUGAR EN NAVEGADOR",
                 btnApk: "DESCARGAR .APK",
                 btnRustore: "DESCARGAR EN RUSTORE",
                 btnPrivacy: "Política de privacidad"
             },
             pt: {
                 subtitle: "QUEBRA-CABEÇA INDIE",
-                btnPlay: "JOGAR NO NAVEGADOR",
                 btnApk: "BAIXAR .APK",
                 btnRustore: "BAIXAR NO RUSTORE",
                 btnPrivacy: "Política de Privacidade"
@@ -252,13 +231,11 @@
 
             const t = translations[lang];
             document.getElementById('subtitle').innerText = t.subtitle;
-            document.getElementById('btn-play').innerText = t.btnPlay;
             document.getElementById('btn-apk').innerText = t.btnApk;
             document.getElementById('btn-rustore').innerText = t.btnRustore;
             document.getElementById('btn-privacy').innerText = t.btnPrivacy;
 
             langSwitcher.value = lang;
-
             document.documentElement.lang = lang;
         }
 
