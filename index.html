@@ -101,6 +101,11 @@
             color: #ffffff;
         }
 
+        .action-button.appgallery {
+            background-color: #CF0A2C;
+            color: #ffffff;
+        }
+
         @media (hover: hover) {
             .action-button:hover {
                 transform: scale(1.05);
@@ -109,6 +114,10 @@
 
             .action-button.rustore:hover {
                 background-color: #004ecc;
+            }
+
+            .action-button.appgallery:hover {
+                background-color: #a80824;
             }
         }
 
@@ -182,13 +191,17 @@
     </div>
 
     <div class="buttons-container">
-        <a href="https://github.com/rywe26s/rywe26s.github.io/releases/download/v1.1.2/BLXCKZ_1.1.2.apk"
+        <a href="https://github.com/rywe26s/rywe26s.github.io/releases/download/v1.3.0/BLXCKZ.v1.3.0.apk"
             class="action-button" id="btn-apk">
             СКАЧАТЬ .APK
         </a>
 
         <a href="https://www.rustore.ru/catalog/app/com.rywes.blxckz" class="action-button rustore" id="btn-rustore">
             СКАЧАТЬ В RUSTORE
+        </a>
+
+        <a href="https://appgallery.huawei.com/#/app/C118492447" class="action-button appgallery" id="btn-appgallery">
+            СКАЧАТЬ В APPGALLERY
         </a>
     </div>
 
@@ -202,24 +215,28 @@
                 subtitle: "ИНДИ-ГОЛОВОЛОМКА",
                 btnApk: "СКАЧАТЬ .APK",
                 btnRustore: "СКАЧАТЬ В RUSTORE",
+                btnAppGallery: "СКАЧАТЬ В APPGALLERY",
                 btnPrivacy: "Политика конфиденциальности"
             },
             en: {
                 subtitle: "INDIE PUZZLE GAME",
                 btnApk: "DOWNLOAD .APK",
                 btnRustore: "GET IT ON RUSTORE",
+                btnAppGallery: "GET IT ON APPGALLERY",
                 btnPrivacy: "Privacy Policy"
             },
             es: {
                 subtitle: "ROMPECABEZAS INDIE",
                 btnApk: "DESCARGAR .APK",
                 btnRustore: "DESCARGAR EN RUSTORE",
+                btnAppGallery: "DESCARGAR EN APPGALLERY",
                 btnPrivacy: "Política de privacidad"
             },
             pt: {
                 subtitle: "QUEBRA-CABEÇA INDIE",
                 btnApk: "BAIXAR .APK",
                 btnRustore: "BAIXAR NO RUSTORE",
+                btnAppGallery: "BAIXAR NO APPGALLERY",
                 btnPrivacy: "Política de Privacidade"
             }
         };
@@ -233,6 +250,7 @@
             document.getElementById('subtitle').innerText = t.subtitle;
             document.getElementById('btn-apk').innerText = t.btnApk;
             document.getElementById('btn-rustore').innerText = t.btnRustore;
+            document.getElementById('btn-appgallery').innerText = t.btnAppGallery;
             document.getElementById('btn-privacy').innerText = t.btnPrivacy;
 
             langSwitcher.value = lang;
